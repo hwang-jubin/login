@@ -36,6 +36,14 @@ export default function FormInput({
         className="w-full pl-12 pr-4 py-2 rounded-full border-2 border-neutral-200"
       />
       {icon[name as IconName] || null}
+      {errors?.map((error, index) => (
+        <div
+          key={index}
+          className="text-red-500 font-medium text-sm mt-1 ml-5 absolute"
+        >
+          {error}
+        </div>
+      ))}
     </div>
   );
 }
