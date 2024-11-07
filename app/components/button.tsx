@@ -12,14 +12,19 @@ const Button: React.FC<ButtonProps> = ({ isSuccess }) => {
 
   return (
     <button
-      className={`w-full py-2 rounded-full text-center ${
-        pending ? "bg-yellow-400" : "bg-green-500"
-      } 
-                 disabled:bg-neutral-400 disabled:text-neutral-300 disabled:cursor-not-allowed`}
+      className={`w-full py-2 rounded-full text-center 
+      ${
+        pending
+          ? "bg-neutral-400"
+          : isSuccess
+          ? "bg-yellow-400"
+          : "bg-green-500"
+      }
+                 disabled:cursor-not-allowed active:scale-95`}
       disabled={pending || isSuccess}
       type="submit"
     >
-      {pending ? "Loading..." : isSuccess ? "Wellcome!" : "Login"}{" "}
+      {pending ? "Loading..." : isSuccess ? "Welcome!🔥" : "Login"}{" "}
     </button>
   );
 };

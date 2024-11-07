@@ -28,12 +28,19 @@ export default function FormInput({
   errors,
   ...rest
 }: InputProps & InputHTMLAttributes<HTMLInputElement>) {
+  console.log(errors);
+
   return (
     <div className="relative w-96">
       <input
         name={name}
         {...rest}
-        className="w-full pl-12 pr-4 py-2 rounded-full border-2 border-neutral-200"
+        className={`w-full pl-12 pr-4 py-2 rounded-full border-2  
+            focus:ring-2 focus:ring-offset-1 ${
+              errors && errors.length == 0
+                ? "border-neutral-200 focus:ring-neutral-300"
+                : "border-red-500 focus:ring-red-500"
+            } focus:outline-none`}
       />
       {icon[name as IconName] || null}
       {errors?.map((error, index) => (
