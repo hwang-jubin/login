@@ -19,9 +19,16 @@ export default async function login(prevState: any, formData: FormData) {
     password: formData.get("password"),
   };
 
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
   const result = await formSchema.safeParseAsync(data);
   if (!result.success) {
     // 검증 통과 후 처리
+
+    const a = result.error.flatten();
+
     return result.error.flatten();
+  } else {
+    return result.success;
   }
 }

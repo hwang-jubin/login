@@ -19,7 +19,7 @@ const icon: Record<IconName, JSX.Element> = {
     <UserIcon className="absolute size-7 left-3 top-1/2 -translate-y-1/2 text-neutral-400" />
   ),
   password: (
-    <KeyIcon className="absolute size-7 left-3 top-1/2 -translate-y-1/2 text-neutral-400" />
+    <KeyIcon className="absolute size-7 left-3 top-2 text-neutral-400" />
   ),
 };
 
@@ -39,7 +39,7 @@ export default function FormInput({
       {errors?.map((error, index) => (
         <div
           key={index}
-          className="text-red-500 font-medium text-sm mt-1 ml-5 absolute"
+          className="text-red-500 font-medium text-sm mt-1 ml-5 "
         >
           {error}
         </div>
