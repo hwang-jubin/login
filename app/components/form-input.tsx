@@ -13,10 +13,10 @@ type IconName = "email" | "username" | "password";
 // IconName의 type에 value는 JSX.Element
 const icon: Record<IconName, JSX.Element> = {
   email: (
-    <EnvelopeIcon className="absolute size-7 left-3 top-1/2 -translate-y-1/2 text-neutral-400" />
+    <EnvelopeIcon className="absolute size-7 left-3 top-2  text-neutral-400" />
   ),
   username: (
-    <UserIcon className="absolute size-7 left-3 top-1/2 -translate-y-1/2 text-neutral-400" />
+    <UserIcon className="absolute size-7 left-3 top-2  text-neutral-400" />
   ),
   password: (
     <KeyIcon className="absolute size-7 left-3 top-2 text-neutral-400" />

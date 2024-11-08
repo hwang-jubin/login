@@ -1,15 +1,16 @@
 import z from "zod";
 
 const formSchema = z.object({
-  email: z.string().email().toLowerCase(),
-  username: z
-    .string({
-      required_error: "Password is required",
-    })
-    .max(10, { message: "10자 이하로 적어주세요" }),
+  email: z
+    .string()
+    .email()
+    .toLowerCase()
+    .endsWith("@zod.com", "@zod.com으로 끝내는 email을 입력하세요"),
+  username: z.string().max(5, { message: "5자 이하로 적어주세요" }),
   password: z
     .string()
-    .refine((password) => password === "12345", "비밀번호가 틀렸습니다"),
+    .min(10, "비밀번호는 최소 10자 이상이어야 합니다.")
+    .regex(/\d/, "비밀번호에는 최소 1개의 숫자가 포함되어야 합니다."),
 });
 
 export default async function login(prevState: any, formData: FormData) {
