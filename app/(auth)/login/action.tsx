@@ -5,6 +5,8 @@ import z from "zod";
 import bcrypt from "bcrypt";
 import getSession from "@/lib/session";
 import { redirect } from "next/navigation";
+import { useRecoilState } from "recoil";
+import { userAtom } from "@/app/atoms/atoms";
 
 const checkEmailExists = async (email: string) => {
   const user = await db.user.findUnique({
@@ -49,6 +51,7 @@ export default async function login(prevState: any, formData: FormData) {
       select: {
         id: true,
         password: true,
+        username: true,
       },
     });
 
@@ -60,7 +63,12 @@ export default async function login(prevState: any, formData: FormData) {
     if (compare) {
       const cookie = await getSession();
       cookie.id = user?.id;
+      cookie.username = user?.username;
       await cookie.save();
+
+      //   const [username, setUsername] = useRecoilState(userAtom);
+      //   setUsername({ username: user!.username });
+      //   console.log(username);
 
       redirect(`/profile`);
     } else {

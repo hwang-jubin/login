@@ -98,11 +98,13 @@ export default async function createAccount(
       },
       select: {
         id: true,
+        username: true,
       },
     });
 
     const cookie = await getSession();
     cookie.id = user.id;
+    cookie.username = user.username;
     await cookie.save();
 
     redirect(`/profile`);
