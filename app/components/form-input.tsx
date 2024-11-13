@@ -8,7 +8,7 @@ interface InputProps {
   errors?: string[];
 }
 
-type IconName = "email" | "username" | "password";
+type IconName = "email" | "username" | "password" | "confirm_password";
 
 // IconName의 type에 value는 JSX.Element
 const icon: Record<IconName, JSX.Element> = {
@@ -19,6 +19,9 @@ const icon: Record<IconName, JSX.Element> = {
     <UserIcon className="absolute size-7 left-3 top-2  text-neutral-400" />
   ),
   password: (
+    <KeyIcon className="absolute size-7 left-3 top-2 text-neutral-400" />
+  ),
+  confirm_password: (
     <KeyIcon className="absolute size-7 left-3 top-2 text-neutral-400" />
   ),
 };
